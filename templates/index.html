@@ -17,60 +17,56 @@
   </head>
 
   <body>
-
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top rounded">
       <a class="navbar-brand" href="/">ЭЦП Почта России</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </nav>
-
-    <main role="main" class="container">
-      <div class="container">
+  </div>
+     <div class="container">
         <div class="row">
           <div class="col-6">
-            <p>Подписать PDF</p>
-            <p>1. Выберите файл WORD</p>
-            <p>2. Проверьте выбор подписи</p>
-            <p>3. Подпишете файл</p>
-            <p>4. Получите подписанный файл</p>
+            <p><h1>Подписать PDF</h1></p>
+            <p><h3>1. Выберите файл WORD</h3></p>
+            <p><h3>2. Проверьте доступные ЭЦП</h3></p>
+            <p><h3>3. Нажмите на кнопку “Подписать”</h3></p>
           </div>
           <div class="col-6">
             <form enctype="multipart/form-data" class="needs-validation" novalidate action="http://0.0.0.0:5000/sign/tim" method=post role="form">
               <div class="card">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleFormControlFile1">Подписываемый файл</label>
+                    <label for="exampleFormControlFile1"><h4>Подписываемый файл</h4></label>
                     <input type="file" class="form-control-file" name="file">
                   </div>
                 </div>
               </div>
-
               <div class="form-row align-items-center">
-                <div class="col-auto my-1">
-                  <label class="mr-sm-2" for="inlineFormCustomSelect">Доступные ЭЦП</label>
+                <div class="col-6 my-2">
+                  <label class="mr-sm-2" for="inlineFormCustomSelect"><h5>Доступные ЭЦП</h5></label>
                   <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name = 'ecp'>
                     <option value="5496847584945435">{{r['keys'][0]["name"]}}</option>
                   </select>
+                <br/><br/>
                   {% if r['keys'][0]["is_expired"] == False %}
                       <div class="alert alert-success" role="alert">
-                        Подпись действительна!
+                        Сертификат действителен!
                       </div>
                     {% else %}
                       <div class="alert alert-danger" role="alert">
-                        Срок действия подписи истек!
+                        Срок действия сертификата истек!
                       </div>
                     {% endif %}
+                  <button class="btn btn-primary btn-block" type="submit">Подписать</button>   
                 </div>
-              </div>
+              </div> 
+                       
               
-              <button class="btn btn-primary ploadimage" type="submit">Подписать</button>
-            </div>
-          </div>
             </form>
           </div>
         </div>
-      </div>
       </div>
 
     </main><!-- /.container -->
