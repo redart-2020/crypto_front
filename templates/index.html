@@ -30,16 +30,11 @@
         <div class="row">
           <div class="col-6">
             <p>Подписать PDF</p>
-            <p>Подписывайте документы и запрашивайте электронные подписи.</p>
-            
-            <p>Файл не выбран
-            или перетащите файл PDF сюда</p>
-            
-            <p>SSL-шифрование для защиты информации</p>
-            
-            <p>Отслеживание активности с хронологией документов</p>
-            
-            <p>Пригласить других поставить цифровую подпись на документе</p></div>
+            <p>1. Выберите файл WORD</p>
+            <p>2. Проверьте выбор подписи</p>
+            <p>3. Подпишете файл</p>
+            <p>4. Получите подписанный файл</p>
+          </div>
           <div class="col-6">
             <form enctype="multipart/form-data" class="needs-validation" novalidate action="http://0.0.0.0:5000/sign/tim" method=post role="form">
               <div class="card">
@@ -55,9 +50,17 @@
                 <div class="col-auto my-1">
                   <label class="mr-sm-2" for="inlineFormCustomSelect">Доступные ЭЦП</label>
                   <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name = 'ecp'>
-                    <option selected>Выберите ключ для аутентификации</option>
-                    <option value="5496847584945435">{{r['keys'][0]}}</option>
+                    <option value="5496847584945435">{{r['keys'][0]["name"]}}</option>
                   </select>
+                  {% if r['keys'][0]["is_expired"] == False %}
+                      <div class="alert alert-success" role="alert">
+                        Подпись действительна!
+                      </div>
+                    {% else %}
+                      <div class="alert alert-danger" role="alert">
+                        Срок действия подписи истек!
+                      </div>
+                    {% endif %}
                 </div>
               </div>
               
