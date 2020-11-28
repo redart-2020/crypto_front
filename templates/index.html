@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>ЭЦП Почта России</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/starter-template.css')}}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="/">ЭЦП Почта России</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+
+    <main role="main" class="container">
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <p>Подписать PDF</p>
+            <p>Подписывайте документы и запрашивайте электронные подписи.</p>
+            
+            <p>Файл не выбран
+            или перетащите файл PDF сюда</p>
+            
+            <p>SSL-шифрование для защиты информации</p>
+            
+            <p>Отслеживание активности с хронологией документов</p>
+            
+            <p>Пригласить других поставить цифровую подпись на документе</p></div>
+          <div class="col-6">
+            <form enctype="multipart/form-data" class="needs-validation" novalidate action="http://0.0.0.0:5000/sign/tim" method=post role="form">
+              <div class="card">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleFormControlFile1">Подписываемый файл</label>
+                    <input type="file" class="form-control-file" name="file">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row align-items-center">
+                <div class="col-auto my-1">
+                  <label class="mr-sm-2" for="inlineFormCustomSelect">Доступные ЭЦП</label>
+                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name = 'ecp'>
+                    <option selected>Выберите ключ для аутентификации</option>
+                    <option value="5496847584945435">{{r['keys'][0]}}</option>
+                  </select>
+                </div>
+              </div>
+              
+              <button class="btn btn-primary ploadimage" type="submit">Подписать</button>
+            </div>
+          </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </main><!-- /.container -->
+    <script type="text/javascript">
+    
+    </script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/jquery-slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  </body>
+</html>
